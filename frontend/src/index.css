@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+@layer base {
+  * {
+    @apply border-gray-200 dark:border-gray-700;
+  }
+  
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white text-sm sm:text-base;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@theme {
+  /* በ config ፋይል ፋንታ እዚህ ጋር ነው custom ነገሮችን የምንጨምረው */
+  --breakpoint-xs: 475px;
+  
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-primary-900: #1e3a8a;
+
+  --animate-fade-in: fadeIn 0.3s ease-out;
+  --animate-slide-in: slideIn 0.3s ease-out;
+  --animate-pulse-slow: pulseSlow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+  @keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes slideIn {
+    0% { opacity: 0; transform: translateX(-20px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes pulseSlow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+}
+
+@layer components {
+  /* Responsive Container */
+  .container-responsive {
+    @apply w-full px-4 mx-auto max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl;
+  }
+
+  /* Responsive Grid */
+  .grid-responsive {
+    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4;
+  }
+}
+
+/* Responsive Prose */
+.prose {
+  @apply max-w-none text-sm sm:text-base;
+}
+.prose h1 { @apply text-xl sm:text-2xl font-semibold mt-6 mb-3; }
+.prose h2 { @apply text-lg sm:text-xl font-semibold mt-6 mb-3; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+@media (min-width: 640px) {
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+}
+::-webkit-scrollbar-track { @apply bg-gray-100 dark:bg-gray-800 rounded; }
+::-webkit-scrollbar-thumb { @apply bg-gray-300 dark:bg-gray-600 rounded; }
